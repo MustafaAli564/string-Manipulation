@@ -1,14 +1,14 @@
-﻿Module Module1
+Module Module1
 
     Sub Main()
-        Dim alpha, str1 As String
+        Dim alpha, str1, x As String
         Dim counter As Integer
         Dim is_pangram As Boolean
 
-        alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
         str1 = ""
         counter = 0
-        is_pangram = False
+        is_pangram = True
 
         Console.Write("Enter String To Check: ")
         str1 = Console.ReadLine
@@ -18,12 +18,15 @@
             is_pangram = False
         Else
             For counter = 1 To 26
-                If InStr(str1, Mid(alpha, counter, 1)) > 0 Then
-                    is_pangram = True
-                Else
+                If InStr(str1, Mid(alpha, counter, 1)) = 0 Then
                     is_pangram = False
                 End If
+                If is_pangram = False Then
+                    Exit For
+                End If
             Next
+
+
         End If
         If is_pangram = True Then
             Console.Write("string is a pangram")
@@ -32,5 +35,3 @@
         End If
         Console.ReadKey()
     End Sub
-
-End Module
